@@ -10,6 +10,18 @@ public interface SeatMapper {
     @Select("SELECT * FROM seat WHERE seat_id = #{seatId}")
     Seat findById(Integer seatId);
 
+    @Select("SELECT * FROM seat")
+    List<Seat> findAll();
+
+    @Select("SELECT COUNT(*) FROM seat")
+    int countAll();
+
+    @Select("SELECT COUNT(*) FROM seat WHERE seat_status = #{status}")
+    int countByStatus(int status);
+
+    @Update("UPDATE seat SET area_id = #{areaId}, seat_code = #{seatCode}, seat_status = #{seatStatus} WHERE seat_id = #{seatId}")
+    void update(Seat seat);
+
     @Select("SELECT * FROM seat WHERE area_id = #{areaId} ORDER BY seat_code")
     List<Seat> findByAreaId(Integer areaId);
 

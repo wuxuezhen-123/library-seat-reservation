@@ -9,6 +9,18 @@ import java.util.List;
 @Mapper
 public interface ReservationMapper {
 
+    @Select("SELECT * FROM reservation")
+    List<Reservation> findAll();
+
+    @Select("SELECT * FROM reservation WHERE seat_id = #{seatId}")
+    List<Reservation> findBySeatId(Integer seatId);
+
+    @Select("SELECT COUNT(*) FROM reservation")
+    int countAll();
+
+    @Select("SELECT COUNT(*) FROM reservation WHERE slot_id = #{slotId}")
+    int countBySlotId(Integer slotId);
+
     /**
      * 插入预约记录（预约创建时使用）
      */

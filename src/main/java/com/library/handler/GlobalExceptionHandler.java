@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
-    public Result handleRuntimeException(RuntimeException e) {
+    public Result<Void> handleRuntimeException(RuntimeException e) {
         return Result.error(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
-    public Result handleException(Exception e) {
+    public Result<Void> handleException(Exception e) {
         e.printStackTrace();
         return Result.error("系统内部错误：" + e.getMessage());
     }

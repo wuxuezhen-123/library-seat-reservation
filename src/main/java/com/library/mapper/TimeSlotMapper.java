@@ -10,6 +10,12 @@ public interface TimeSlotMapper {
     @Select("SELECT * FROM time_slot WHERE slot_id = #{slotId}")
     TimeSlot findById(Integer slotId);
 
+    @Delete("DELETE FROM time_slot WHERE slot_id = #{slotId}")
+    void deleteById(Integer slotId);
+
+    @Select("SELECT COUNT(*) FROM reservation WHERE slot_id = #{slotId}")
+    int countBySlotId(Integer slotId);
+
     @Select("SELECT * FROM time_slot WHERE status = 1 ORDER BY slot_id")
     List<TimeSlot> findAllEnabled();
 

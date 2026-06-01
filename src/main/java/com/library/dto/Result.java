@@ -4,7 +4,8 @@ import lombok.Data;
 
 /**
  * 统一返回结果类
- * 格式: {"code": 状态码, "msg": 提示信息, "data": 返回数据}
+ * 格式: {"code": 200, "msg": "提示信息", "data": 返回数据}
+ * code 为 Integer 类型，前端使用 response.code === 200 判断
  */
 @Data
 public class Result<T> {
@@ -12,10 +13,9 @@ public class Result<T> {
     private String msg;
     private T data;
 
-    // 私有构造，通过静态方法创建
     private Result() {}
 
-    // 成功，无数据
+    // ========== 成功方法 ==========
     public static <T> Result<T> success() {
         Result<T> result = new Result<>();
         result.setCode(200);
@@ -23,7 +23,6 @@ public class Result<T> {
         return result;
     }
 
-    // 成功，带数据
     public static <T> Result<T> success(T data) {
         Result<T> result = new Result<>();
         result.setCode(200);
@@ -32,7 +31,6 @@ public class Result<T> {
         return result;
     }
 
-    // 成功，自定义消息
     public static <T> Result<T> success(String msg, T data) {
         Result<T> result = new Result<>();
         result.setCode(200);
@@ -41,7 +39,7 @@ public class Result<T> {
         return result;
     }
 
-    // 失败，默认消息
+    // ========== 失败方法 ==========
     public static <T> Result<T> error() {
         Result<T> result = new Result<>();
         result.setCode(500);
@@ -49,7 +47,6 @@ public class Result<T> {
         return result;
     }
 
-    // 失败，自定义消息
     public static <T> Result<T> error(String msg) {
         Result<T> result = new Result<>();
         result.setCode(500);
@@ -57,8 +54,8 @@ public class Result<T> {
         return result;
     }
 
-    // 失败，自定义状态码和消息
-    public static <T> Result<T> error(Integer code, String msg) {
+    // 新增：支持自定义整数状态码的错误返回
+    public static <T> Result<T> error(int code, String msg) {
         Result<T> result = new Result<>();
         result.setCode(code);
         result.setMsg(msg);

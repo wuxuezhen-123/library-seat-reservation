@@ -14,6 +14,12 @@ public interface StudentMapper {
     @Select("SELECT * FROM student WHERE stu_id = #{stuId}")
     Student findByStuId(String stuId);
 
+    @Select("SELECT COUNT(*) FROM student")
+    int countAll();
+
+    @Select("SELECT COUNT(*) FROM student WHERE is_blacklisted = 1")
+    int countBlacklisted();
+
     /**
      * 插入学生（注册时使用）
      */

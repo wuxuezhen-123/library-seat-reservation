@@ -17,3 +17,8 @@ mybatis:
 
 server:
   port: 8080
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.boot: DEBUG

@@ -10,6 +10,12 @@ public interface ViolateRecordMapper {
     @Select("SELECT * FROM violate_record WHERE violate_id = #{violateId}")
     ViolateRecord findById(Integer violateId);
 
+    @Select("SELECT * FROM violate_record")
+    List<ViolateRecord> findAll();
+
+    @Select("SELECT COUNT(*) FROM violate_record")
+    int countAll();
+
     @Select("SELECT * FROM violate_record WHERE stu_id = #{stuId} ORDER BY violate_time DESC")
     List<ViolateRecord> findByStuId(String stuId);
 

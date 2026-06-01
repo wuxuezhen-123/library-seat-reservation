@@ -10,6 +10,9 @@ public interface AreaMapper {
     @Select("SELECT * FROM study_area WHERE area_id = #{areaId}")
     Area findById(Integer areaId);
 
+    @Select("SELECT * FROM study_area WHERE area_name = #{name}")
+    Area findByName(String name);
+
     @Select("SELECT * FROM study_area WHERE status = 1 ORDER BY area_id")
     List<Area> findAllEnabled();
 
