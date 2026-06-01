@@ -5,8 +5,7 @@ import java.time.LocalDate;
 
 @Data
 public class ReserveRequest {
-    private String stuId;      // 学号
-    private Integer seatId;    // 座位ID
-    private Integer slotId;    // 时段ID
-    private LocalDate resDate; // 预约日期
+    private Integer seatId;      // 座位ID
+    private LocalDate date;      // 预约日期（前端字段名 date）
+    private Integer timeSlotId;  // 时段ID（前端字段名 timeSlotId）
 }

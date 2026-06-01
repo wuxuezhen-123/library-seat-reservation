@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface ReservationService {
-    void reserve(ReserveRequest request);          // 预约
-    void cancel(Integer resId, String stuId);      // 取消预约
+    void reserve(ReserveRequest request, String stuId);   // 增加 stuId 参数
+    void cancel(Integer resId, String stuId);
     List<Reservation> getReservationsBySeat(Integer seatId, LocalDate date);
     Reservation getById(Integer resId);
 }

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api")          // 添加类级别 @RequestMapping 需要导入
+@RequestMapping("/api")
 public class StatisticsController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class StatisticsController {
     @Autowired
     private ReservationMapper reservationMapper;
 
-    @GetMapping("/statistics")   // 实际路径：/api/statistics
+    @GetMapping("/statistics")
     public Result<Map<String, Object>> getStatistics() {
         Map<String, Object> stats = new HashMap<>();
         stats.put("totalSeats", seatMapper.countAll());
